@@ -296,6 +296,7 @@ runs:
       uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       with:
         ref: ${{ inputs.upgrade-base }}
+        clean: "false"
       # TODO: TYLER DOES THIS NEED CLEAN?
 
     - name: Run upgrade
@@ -317,6 +318,7 @@ runs:
         base: ${{ inputs.upgrade-base }}
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         branch: trunk-io/update-trunk
+        # TODO: TYLER DOES THIS NEED ADD-PATHS
         commit-message: ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
         delete-branch: true
 
