@@ -289,19 +289,20 @@ runs:
         INPUT_ARGUMENTS: ${{ inputs.arguments }}
         INPUT_LABEL: ${{ inputs.label }}
 
-    # TODO: TYLER RUN EVEN IF PREV FAIL
-    - name: Prepare upgrade
-      id: prepare-upgrade
-      if: inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
-      with:
-        ref: ${{ inputs.upgrade-base }}
-        clean: "false"
-      # TODO: TYLER DOES THIS NEED CLEAN?
+    # # TODO: TYLER RUN EVEN IF PREV FAIL
+    # - name: Prepare upgrade
+    #   id: prepare-upgrade
+    #   if: inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
+    #   uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+    #   with:
+    #     ref: ${{ inputs.upgrade-base }}
+    #     clean: "false"
+    #   # TODO: TYLER DOES THIS NEED CLEAN?
 
     - name: Run upgrade
       id: upgrade
-      if: steps.prepare-upgrade.outcome == 'success'
+      # if: steps.prepare-upgrade.outcome == 'success'
+      if: inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
       shell: bash
       run: |
         # Run trunk upgrade
