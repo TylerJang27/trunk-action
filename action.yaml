@@ -302,7 +302,7 @@ runs:
     - name: Run upgrade
       id: upgrade
       # if: steps.prepare-upgrade.outcome == 'success'
-      if: inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
+      if: always() && inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
       shell: bash
       run: |
         # Run trunk upgrade
