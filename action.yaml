@@ -311,7 +311,7 @@ runs:
         UPGRADE_ARGUMENTS: ${{ inputs.upgrade-arguments }}
 
     - name: Create Pull Request
-      if: steps.upgrade.outcome == 'success'
+      if: always() && steps.upgrade.outcome == 'success'
       uses: peter-evans/create-pull-request@v4
       with:
         title: |
