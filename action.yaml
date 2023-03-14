@@ -301,7 +301,8 @@ runs:
 
     - name: Run upgrade
       id: upgrade
-      # if: steps.prepare-upgrade.outcome == 'success'
+      # if: always() && steps.prepare-upgrade.outcome == 'success'
+      # Run regardless of whether check succeeded
       if: always() && inputs.upgrade == 'true' && steps.auto_init.outputs.auto_init != 'true'
       shell: bash
       run: |

@@ -11,30 +11,27 @@ if [[ -n ${new_cli_version} ]]; then
   title_message="Upgrade trunk to ${new_cli_version}"
 fi
 
-# TODO: TYLER ADD AN EXPLANATION COMMENT
-if [[ ! -e trunk ]]; then
-  ${TRUNK_PATH} daemon shutdown
-  git config --unset core.hooksPath
-  rm -f .trunk/landing-state.json
-fi
+# Avoid triggering a git-hook during the pull request creation action, and avoid resetting git hook config via daemon
+${TRUNK_PATH} daemon shutdown
+git config --unset core.hooksPath
+rm -f .trunk/landing-state.json
 
-# trunk-ignore(shellcheck/SC2001)
-formatted_output=$(echo "${upgrade_output}" | sed -e 's/^\(  \)/*\1/')
-# TODO: TYLER FIGURE THIS OUT
-# formatted_output=${upgrade_output//^\( +\)/*\1$}
-# TODO: TYLER CHANGE URL
+# trunk-ignore(shellcheck/SC2001): more complicated sed parsing required
+formatted_output=$(echo "${upgrade_output}" | sed -e 's/^\(  \)\{0,1\}  /\1- /')
 
-# TODO: TYLER MAKE THIS A TEMPLATE AND INSERT IT
-description=$(cat upgrade_pr.md | UPGRADE_CONTENTS="${formatted_output}" envsubst)
-
-# TODO: TYLER REMOVE THIS
-echo "Finished running upgrade"
-echo "${description}" >foo5.md
+# TODO: TYLER FIX URL
+description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <upgrade_pr.md)
 
 # TODO: TYLER ATTEMPT TO CLEAN THIS UP
 # trunk-ignore(shellcheck/SC2129): Write multi-line value to output
-echo "DESCRIPTION<<EOF" >>"${GITHUB_OUTPUT}"
-echo "${description}" >>"${GITHUB_OUTPUT}"
-echo "EOF" >>"${GITHUB_OUTPUT}"
+
+{
+  echo "DESCRIPTION<<EOF"
+  echo "${description}"
+  echo "EOF"
+} >>"${GITHUB_OUTPUT}"
+# echo "DESCRIPTION<<EOF" >>"${GITHUB_OUTPUT}"
+# echo "${description}" >>"${GITHUB_OUTPUT}"
+# echo "EOF" >>"${GITHUB_OUTPUT}"
 
 echo "TITLE_MESSAGE=${title_message}" >>"${GITHUB_OUTPUT}"
