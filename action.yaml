@@ -319,7 +319,8 @@ runs:
           ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         base: ${{ inputs.upgrade-base }}
-        branch: trunk-io/update-trunk
+        # TODO: TYLER REMOVE 2
+        branch: trunk-io/update-trunk-2
         labels: trunk
         # TODO: TYLER DOES THIS NEED ADD-PATHS
 
