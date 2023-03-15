@@ -21,8 +21,10 @@ jobs:
 
       - name: Trunk Check
         uses: ./ # external users, use: trunk-io/trunk-action@v1
-        with:
-          upgrade: true
+
+      - name: Trunk Upgrade
+        uses: ./upgrade/ # external users, use: trunk-io/trunk-action/upgrade@v1
+
 
   # repo_tests:
   #   name: Repository tests

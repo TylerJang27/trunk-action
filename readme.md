@@ -241,15 +241,13 @@ Trunk and its tools, you can configure the action to automatically generate pull
 upgrades:
 
 ```yaml
-- name: Trunk Check and Upgrade
-  uses: trunk-io/trunk-action@v1
-  with:
-    upgrade: true
+- name: Trunk Upgrade
+  uses: trunk-io/trunk-action/upgrade@v1
 ```
 
 We recommend that you only set this field on nightly or weekly schedules, running from your main
-branch. You can also set the `upgrade-arguments` field to filter particular upgrades and set
-`upgrade-base` to define the branch to create a PR against (default `main`).
+branch. You can also set the `arguments` field to filter particular upgrades and set `base` to
+define the branch to create a PR against (default `main`).
 
 ## Feedback
 
