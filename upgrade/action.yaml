@@ -30,7 +30,7 @@ runs:
       shell: bash
       run: |
         # Locate trunk
-        ${GITHUB_ACTION_PATH}/../locate_trunk.sh
+        ${GITHUB_ACTION_PATH}/locate_trunk.sh
       env:
         INPUT_TRUNK_PATH: ${{ inputs.trunk-path }}
 
@@ -108,4 +108,4 @@ runs:
       shell: bash
       run: |
         # Cleanup temporary files
-        ${GITHUB_ACTION_PATH}/../cleanup.sh
+        ${GITHUB_ACTION_PATH}/cleanup.sh

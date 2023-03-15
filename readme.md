@@ -244,19 +244,37 @@ upgrades:
 ## Usage
 
 ```yaml
-steps:
-  - name: Checkout
-    uses: actions/checkout@v3
+on:
+  push:
+    branches: [main]
+    paths: [.trunk/trunk.yaml]
 
-  # >>> Install your own deps here (npm install, etc) <<<
+permissions: read-all
 
-  - name: Trunk Upgrade
-    uses: trunk-io/trunk-action/upgrade@v1
+jobs:
+  trunk_upgrade:
+    name: Upgrade Trunk
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # For trunk to create PRs
+      pull-requests: write # For trunk to create PRs
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # >>> Install your own deps here (npm install, etc) <<<
+
+      - name: Trunk Upgrade
+        uses: trunk-io/trunk-action/upgrade@v1
 ````
 
 We recommend that you only run the upgrade action on a nightly or weekly cadence, running from your
 main branch. You can also set the `arguments` field to filter particular upgrades and set `base` to
 define the branch to create a PR against (default `main`).
+
+You must also enable the repository setting to "Allow GitHub Actions to create and approve pull
+requests".
 
 ## Feedback
 
