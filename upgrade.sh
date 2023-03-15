@@ -3,6 +3,7 @@
 set -euo pipefail
 
 # trunk-ignore(shellcheck/SC2086): pass arguments directly as is
+
 upgrade_output=$(${TRUNK_PATH} upgrade --no-progress -n ${UPGRADE_ARGUMENTS} | sed -e 's/\x1b\[[0-9;]*m//g' | grep "upgrade" -A 500)
 title_message="Upgrade trunk"
 
