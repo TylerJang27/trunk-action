@@ -240,13 +240,22 @@ If you have a `.trunk/trunk.yaml` checked into your repo, and you want to automa
 Trunk and its tools, you can configure the action to automatically generate pull requests with these
 upgrades:
 
-```yaml
-- name: Trunk Upgrade
-  uses: trunk-io/trunk-action/upgrade@v1
-```
+````yaml
+## Usage
 
-We recommend that you only set this field on nightly or weekly schedules, running from your main
-branch. You can also set the `arguments` field to filter particular upgrades and set `base` to
+```yaml
+steps:
+  - name: Checkout
+    uses: actions/checkout@v3
+
+  # >>> Install your own deps here (npm install, etc) <<<
+
+  - name: Trunk Upgrade
+    uses: trunk-io/trunk-action/upgrade@v1
+````
+
+We recommend that you only run the upgrade action on a nightly or weekly cadence, running from your
+main branch. You can also set the `arguments` field to filter particular upgrades and set `base` to
 define the branch to create a PR against (default `main`).
 
 ## Feedback
