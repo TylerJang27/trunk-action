@@ -236,7 +236,20 @@ are currently supported. "Rebase and merge" does not yet work correctly.
 
 ## Automatic Upgrades
 
-# TODO: TYLER DO THIS
+If you have a `.trunk/trunk.yaml` checked into your repo, and you want to automatically upgrade
+Trunk and its tools, you can configure the action to automatically generate pull requests with these
+upgrades:
+
+```yaml
+- name: Trunk Check and Upgrade
+  uses: trunk-io/trunk-action@v1
+  with:
+    upgrade: true
+```
+
+We recommend that you only set this field on nightly or weekly schedules, running from your main
+branch. You can also set the `upgrade-arguments` field to filter particular upgrades and set
+`upgrade-base` to define the branch to create a PR against (default `main`).
 
 ## Feedback
 
