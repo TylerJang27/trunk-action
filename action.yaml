@@ -320,6 +320,7 @@ runs:
         base: ${{ inputs.upgrade-base }}
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         branch: trunk-io/update-trunk
+        labels: trunk
         # TODO: TYLER DOES THIS NEED ADD-PATHS
         commit-message: ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
         delete-branch: true
