@@ -22,7 +22,7 @@ formatted_output=$(echo "${upgrade_output}" | sed -e 's/^\(  \)\{0,1\}  /\1- /')
 
 # TODO: TYLER FIX URL
 # Generate markdown
-description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <upgrade_pr.md)
+description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <"${GITHUB_ACTION_PATH}"/upgrade_pr.md)
 
 {
   echo "DESCRIPTION<<EOF"
