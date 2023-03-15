@@ -320,14 +320,14 @@ runs:
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         base: ${{ inputs.upgrade-base }}
         # TODO: TYLER REMOVE 2
-        branch: trunk-io/update-trunk-3
+        branch: trunk-io/update-trunk-4
         labels: trunk
         # TODO: TYLER DOES THIS NEED ADD-PATHS
 
         # TODO: TYLER REMOVE FOO
-        commit-message: foo ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
-        committer: Trunk <trunk-io@users.noreply@github.com>
-        author: Trunk <trunk-io@users.noreply@github.com>
+        commit-message: ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
+        committer: Trunk <noreply@trunk.io>
+        author: Trunk <noreply@trunk.io>
 
         delete-branch: true
 
