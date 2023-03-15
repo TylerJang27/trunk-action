@@ -30,7 +30,7 @@ lint:
     - flake8@5.0.0:
         packages:
           - flake8-bugbear@23.3.11
-          - flake8-docstrings@1.6.0
+          - flake8-docstrings@1.6.1
   ignore:
     - linters: [ALL]
       paths:
