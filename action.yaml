@@ -317,8 +317,11 @@ runs:
       with:
         title: |
           ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
-        base: ${{ inputs.upgrade-base }}
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
+        committer: Trunk2 <noreply@trunk.io>
+        author: Trunk1 <trunk@noreply.trunk.io>
+
+        base: ${{ inputs.upgrade-base }}
         branch: trunk-io/update-trunk
         labels: trunk
         # TODO: TYLER DOES THIS NEED ADD-PATHS
