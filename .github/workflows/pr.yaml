@@ -24,7 +24,8 @@ jobs:
 
       - name: Trunk Upgrade
         uses: ./upgrade/ # external users, use: trunk-io/trunk-action/upgrade@v1
-
+        with:
+          arguments: cli runtimes
 
   # TODO: TYLER REINSTATE THIS FILE
   # repo_tests:
