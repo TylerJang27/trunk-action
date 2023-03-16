@@ -10,6 +10,9 @@ jobs:
   trunk_check:
     name: Trunk Check Upload
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # For trunk to create PRs
+      pull-requests: write # For trunk to create PRs
 
     steps:
       - name: Checkout
@@ -19,3 +22,6 @@ jobs:
         uses: ./ # external users, use: trunk-io/trunk-action@v1
         with:
           trunk-token: ${{ secrets.TRUNK_TOKEN }}
+
+      - name: Trunk Upgrade
+        uses: ./upgrade/ # external users, use: trunk-io/trunk-action/upgrade@v1
