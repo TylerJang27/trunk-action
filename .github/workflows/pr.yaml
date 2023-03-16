@@ -25,6 +25,9 @@ jobs:
       - name: Trunk Upgrade
         uses: ./upgrade/ # external users, use: trunk-io/trunk-action/upgrade@v1
 
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+
 
   # TODO: TYLER REINSTATE THIS FILE
   # repo_tests:
