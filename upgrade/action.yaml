@@ -91,6 +91,13 @@ runs:
       env:
         UPGRADE_ARGUMENTS: ${{ inputs.arguments }}
 
+    - name: Cleanup temporary files
+      if: always()
+      shell: bash
+      run: |
+        # Cleanup temporary files
+        ${GITHUB_ACTION_PATH}/cleanup.sh
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
@@ -98,19 +105,8 @@ runs:
           ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         base: ${{ inputs.base }}
-        # TODO: TYLER FIX BRANCH NAME
-        branch: trunk-io/update-trunk-test-2
+        branch: trunk-io/update-trunk
         labels: trunk
         add-paths: .trunk
         commit-message: ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
         delete-branch: true
-
-    - name: Cleanup temporary files
-      if: always()
-      shell: bash
-      run: |
-        # Cleanup temporary files
-        ls -al ${GITHUB_ACTION_PATH}
-        pwd
-        ls -al ${GITHUB_ACTION_PATH}..
-        ${GITHUB_ACTION_PATH}/cleanup.sh
