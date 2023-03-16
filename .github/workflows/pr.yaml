@@ -9,27 +9,17 @@ permissions: read-all
 jobs:
   trunk_check:
     name: Trunk Check Runner
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       checks: write # For trunk to post annotations
-      contents: write # For trunk to create PRs
-      pull-requests: write # For trunk to create PRs
 
     steps:
       - name: Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
 
-      # - name: Trunk Check
-      #   uses: ./ # external users, use: trunk-io/trunk-action@v1
+      - name: Trunk Check
+        uses: ./ # external users, use: trunk-io/trunk-action@v1
 
-      - name: Trunk Upgrade
-        uses: ./upgrade/ # external users, use: trunk-io/trunk-action/upgrade@v1
-
-      - name: Checkout
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
-
-
-  # TODO: TYLER REINSTATE THIS FILE
-  # repo_tests:
-  #   name: Repository tests
-  #   uses: ./.github/workflows/repo_tests.yaml
+  repo_tests:
+    name: Repository tests
+    uses: ./.github/workflows/repo_tests.yaml
