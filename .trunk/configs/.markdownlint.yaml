@@ -5,6 +5,8 @@ bullet: false
 html: false
 indentation: false
 line_length: false
+# Allow mardown files without header sections
+MD041: false
 spaces: false
 url: false
 whitespace: false
