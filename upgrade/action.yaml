@@ -99,7 +99,7 @@ runs:
         body: ${{ steps.upgrade.outputs.DESCRIPTION }}
         base: ${{ inputs.base }}
         # TODO: TYLER FIX BRANCH NAME
-        branch: trunk-io/update-trunk-test-1
+        branch: trunk-io/update-trunk-test-2
         labels: trunk
         add-paths: .trunk
         commit-message: ${{ steps.upgrade.outputs.TITLE_MESSAGE }}
