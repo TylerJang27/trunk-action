@@ -108,4 +108,7 @@ runs:
       shell: bash
       run: |
         # Cleanup temporary files
+        ls -al
+        pwd
+        ls -al ..
         ${GITHUB_ACTION_PATH}/../cleanup.sh
