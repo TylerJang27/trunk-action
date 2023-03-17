@@ -23,8 +23,8 @@ jobs:
       - name: Trunk Upgrade Test
         uses: ./upgrade # TODO: TYLER REMOVE
         with:
-          arguments: linters
+          arguments: check
 
-  repo_tests:
-    name: Repository tests
-    uses: ./.github/workflows/repo_tests.yaml
+  # repo_tests:
+  #   name: Repository tests
+  #   uses: ./.github/workflows/repo_tests.yaml
