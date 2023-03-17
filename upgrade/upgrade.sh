@@ -21,18 +21,26 @@ if [[ ${trimmed_upgrade_output} == *"cli upgrade"* ]]; then
   title_message="Upgrade trunk to ${new_cli_version}"
 fi
 
+echo "TYLER DONE STEP 2" # TODO: TYLER REMOVE
+
 # Step 3: Prepare for pull request creation action.
 # Avoid triggering a git-hook, and avoid resetting git hook config via daemon
 ${TRUNK_PATH} daemon shutdown
 git config --unset core.hooksPath
+
+echo "TYLER DONE STEP 3" # TODO: TYLER REMOVE
 
 # Step 4: Format upgrade output for PR.
 # Replace space indentation with bulleted list (including sub-bullets)
 # trunk-ignore(shellcheck/SC2001): more complicated sed parsing required
 formatted_output=$(echo "${trimmed_upgrade_output}" | sed -e 's/^\(  \)\{0,1\}  /\1- /')
 
+echo "TYLER DONE STEP 4" # TODO: TYLER REMOVE
+
 # Step 5: Generate markdown
 description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <"${GITHUB_ACTION_PATH}"/upgrade_pr.md)
+
+echo "TYLER DONE STEP 5" # TODO: TYLER REMOVE
 
 # Step 6: Write outputs
 {
@@ -42,3 +50,5 @@ description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <"${GITHUB_ACTION_
 } >>"${GITHUB_OUTPUT}"
 
 echo "TITLE_MESSAGE=${title_message}" >>"${GITHUB_OUTPUT}"
+
+echo "TYLER DONE STEP 6" # TODO: TYLER REMOVE
