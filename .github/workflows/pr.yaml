@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       checks: write # For trunk to post annotations
+      contents: write # For trunk to create PRs
+      pull-requests: write # For trunk to create PRs
 
     steps:
       - name: Checkout
