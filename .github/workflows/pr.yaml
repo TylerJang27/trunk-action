@@ -23,9 +23,9 @@ jobs:
       #   uses: ./ # external users, use: trunk-io/trunk-action@v1
 
       - name: Trunk Upgrade Testing
-        uses: ./upgrade # TODO: TYLER REMOVE
+        uses: ./upgrade/ # TODO: TYLER REMOVE
         with:
-          arguments: check
+          arguments: check plugins
 
   # repo_tests:
   #   name: Repository tests
