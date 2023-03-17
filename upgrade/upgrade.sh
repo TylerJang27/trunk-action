@@ -26,6 +26,9 @@ echo "TYLER DONE STEP 2" # TODO: TYLER REMOVE
 # Step 3: Prepare for pull request creation action.
 # Avoid triggering a git-hook, and avoid resetting git hook config via daemon
 ${TRUNK_PATH} daemon shutdown
+
+echo "TYLER DONE STEP 2.5" # TODO: TYLER REMOVE
+
 git config --unset core.hooksPath
 
 echo "TYLER DONE STEP 3" # TODO: TYLER REMOVE
