@@ -96,7 +96,7 @@ runs:
       shell: bash
       run: |
         # Cleanup temporary files
-        ${GITHUB_ACTION_PATH}/cleanup.sh
+        ${GITHUB_ACTION_PATH}/../cleanup.sh
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4

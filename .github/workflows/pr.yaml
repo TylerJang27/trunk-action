@@ -20,6 +20,11 @@ jobs:
       - name: Trunk Check
         uses: ./ # external users, use: trunk-io/trunk-action@v1
 
+      - name: Trunk Upgrade Test
+        uses: ./upgrade # TODO: TYLER REMOVE
+        with:
+          arguments: linters
+
   repo_tests:
     name: Repository tests
     uses: ./.github/workflows/repo_tests.yaml

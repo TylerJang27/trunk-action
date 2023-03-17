@@ -26,7 +26,6 @@ git config --unset core.hooksPath
 # trunk-ignore(shellcheck/SC2001): more complicated sed parsing required
 formatted_output=$(echo "${trimmed_upgrade_output}" | sed -e 's/^\(  \)\{0,1\}  /\1- /')
 
-# TODO: TYLER FIX URL
 # Generate markdown
 description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <"${GITHUB_ACTION_PATH}"/upgrade_pr.md)
 
