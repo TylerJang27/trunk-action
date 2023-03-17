@@ -35,10 +35,10 @@ formatted_output=$(echo "${trimmed_upgrade_output}" | sed -e 's/^\(  \)\{0,1\}  
 description=$(UPGRADE_CONTENTS="${formatted_output}" envsubst <"${GITHUB_ACTION_PATH}"/upgrade_pr.md)
 
 # Step 6: Write outputs
-echo "TITLE_MESSAGE=${title_message}" >>"${GITHUB_OUTPUT}"
-
 {
   echo "DESCRIPTION<<EOF"
   echo "${description}"
   echo "EOF"
 } >>"${GITHUB_OUTPUT}"
+
+echo "TITLE_MESSAGE=${title_message}" >>"${GITHUB_OUTPUT}"
