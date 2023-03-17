@@ -30,7 +30,7 @@ ${TRUNK_PATH} daemon shutdown
 echo "TYLER DONE STEP 2.5" # TODO: TYLER REMOVE
 which git
 
-git config --unset core.hooksPath
+git config --local --unset core.hooksPath
 
 echo "TYLER DONE STEP 3" # TODO: TYLER REMOVE
 
